@@ -1,0 +1,61 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `BookAddOrEdit`(
+_BookID INT,
+_BookName varchar (45),
+_Author varchar (45),
+_Description varchar(200),
+_Col varchar (45),
+_Edin varchar (45)
+)
+BEGIN
+	if _BookID = 0 then
+		insert into Book (BookName,Author,Description,Col,Edin)
+        values	(_BookName,_Author,_Description,_Col,_Edin);
+	else
+		update	Book
+        set 
+			BookName = _BookName,
+            Author = _Author,
+            Description = _Description,
+            Col = _Col,
+            Edin = _Edin;
+            end if;
+END
+..................
+..................
+..................
+CREATE DEFINER=`root`@`localhost` PROCEDURE `BookDeleteByID`(
+_BookID int
+)
+BEGIN
+	delete from Book
+    where BookID = _BookID;
+END
+..................
+..................
+..................
+CREATE DEFINER=`root`@`localhost` PROCEDURE `BookViewAll`()
+BEGIN
+	select *
+    From Book;
+END
+..................
+..................
+..................
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UserAddOrEdit`(
+_UserID INT,
+_UserName varchar (45),
+_UserPassword varchar (45),
+_Description varchar (200)
+)
+BEGIN
+	if _UserID = 0 then
+		insert into User (UserName,UserPassword,Description)
+        values	(_UserName,_UserPassword,_Description);
+	else
+		update	User
+        set 
+			UserName = _UserName,
+            UserPassword = _UserPassword,
+            Description = _Description;
+            end if;
+END
